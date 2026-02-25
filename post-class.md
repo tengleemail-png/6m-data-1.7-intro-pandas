@@ -10,12 +10,12 @@ Paste the answer as Python in the answer code section below each question.
 
 ### Question 1
 
-Question: Select all numeric columns except float from the DataFrame `dft`.
-
+Question:# Select all numeric types but exclude floats
+numeric_non_floats = dft.select_dtypes(include='number', exclude='float')
 Answer:
 
 ```python
-
+print(dft is ())
 ```
 
 ### Question 2
@@ -25,7 +25,7 @@ Question: How do you return the last 3 rows of a DataFrame `df`?
 Answer:
 
 ```python
-
+df.tail(3)
 ```
 
 ### Question 3
@@ -35,8 +35,19 @@ Question: Return the minimum and maximum of a Series `x` as a new Series with th
 Answer:
 
 ```python
+new_series = pd.series([x.min(), x.max()],index = ["min", "max"]) 
+
+#Answer from AI
+import pandas as pd
+
+new_series = pd.Series({"min": x.min(), "max": x.max()})
+
+#version 2
+new_series = pd.Series([x.min(), x.max()], index=["min", "max"])
 
 ```
+
+
 
 ### Question 4
 
@@ -99,6 +110,7 @@ pd.Series([x.min(), x.max()], index=["min", "max"])
 ### Question 4
 
 Question: Multiply `df1` and `df2` (two DataFrames) with a `fill_value` of 1.
+#Think of fill_value as a "placeholder for missing data" during the calculation. It does not #permanently change your original DataFrames; it only steps in when one DataFrame has a value and the #other has a "hole."
 
 Answer:
 
@@ -117,7 +129,7 @@ nested_dict = {'A': {'a': 1, 'b': 2}, 'B': {'a': 3, 'b': 4}}
 Answer:
 
 ```python
-df = pd.DataFrame.from_dict(nested_dict, orient='index')
+df = pd.DataFrame.from_dict(nested_dict, orient='index') #If you don't specify an orientation, pandas #assumes the outer keys ('A', 'B') are your Columns
 ```
 
 # **Post-Class Self-Study: Optional Pandas Topics**
